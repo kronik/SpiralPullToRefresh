@@ -9,7 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIScrollView+SpiralPullToRefresh.h"
 
-#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define ScreenWidth  [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 
 #define SpiralPullToRefreshViewHeight 300
 #define SpiralPullToRefreshViewTriggerAreaHeight 101
@@ -515,6 +516,8 @@ static char UIScrollViewPullToRefreshView;
     return CGPointMake(((contentOffset + 70) * sin((contentOffset + 0) * M_PI / 90)) + (ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - ((contentOffset + 70) * cos((contentOffset + 0) * M_PI / 90)) + 28);
 }
 
+
+
 - (CGPoint) calcNewCurvePointForBottomRightViewForOffset: (float)contentOffset {
     
     contentOffset *= 2;
@@ -522,8 +525,10 @@ static char UIScrollViewPullToRefreshView;
     
     CGPoint point = CGPointMake(((contentOffset + 70) * sin((contentOffset + 0) * M_PI / 90)) + (ScreenWidth / 2) - bottomLeftView.frame.size.width + 1, self.frame.size.height - ((contentOffset + 70) * cos((contentOffset + 0) * M_PI / 90)) + 29);
     
-    CGPoint finalPoint = CGPointMake(point.x * cos(45 * M_PI / 180) + point.y * sin (45 * M_PI / 180) - 124,
-                                     point.y * cos(45 * M_PI / 180) - point.x * sin (45 * M_PI / 180) + 184);
+    CGPoint finalPoint = CGPointMake(point.x * cos(45 * M_PI / 180) + point.y * sin (45 * M_PI / 180) - (ScreenWidth > 700 ? 58.5 : 124),
+                                     point.y * cos(45 * M_PI / 180) - point.x * sin (45 * M_PI / 180) + (ScreenWidth > 700 ? 342 : 184));
+    
+    NSLog(@"Width: %f", ScreenWidth);
     
     return finalPoint;
 }
