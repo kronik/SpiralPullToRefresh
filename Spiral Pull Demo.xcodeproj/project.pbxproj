@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0211179417364B8D0046D4CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211179317364B8D0046D4CC /* UIKit.framework */; };
+		0211179617364B8D0046D4CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211179517364B8D0046D4CC /* Foundation.framework */; };
+		0211179817364B8D0046D4CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0211179717364B8D0046D4CC /* CoreGraphics.framework */; };
+		0211179E17364B8D0046D4CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0211179C17364B8D0046D4CC /* InfoPlist.strings */; };
+		021117A017364B8D0046D4CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0211179F17364B8D0046D4CC /* main.m */; };
+		021117A417364B8D0046D4CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 021117A317364B8D0046D4CC /* AppDelegate.m */; };
+		021117A617364B8D0046D4CC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 021117A517364B8D0046D4CC /* Default.png */; };
+		021117A817364B8D0046D4CC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 021117A717364B8D0046D4CC /* Default@2x.png */; };
+		021117AA17364B8D0046D4CC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 021117A917364B8D0046D4CC /* Default-568h@2x.png */; };
+		021117B317364C160046D4CC /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 021117B217364C160046D4CC /* UIScrollView+SpiralPullToRefresh.m */; };
+		021117B617364DC10046D4CC /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021117B517364DC10046D4CC /* DataViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0211179017364B8D0046D4CC /* Spiral Pull Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spiral Pull Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0211179317364B8D0046D4CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0211179517364B8D0046D4CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0211179717364B8D0046D4CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0211179B17364B8D0046D4CC /* Spiral Pull Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Spiral Pull Demo-Info.plist"; sourceTree = "<group>"; };
+		0211179D17364B8D0046D4CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0211179F17364B8D0046D4CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		021117A117364B8D0046D4CC /* Spiral Pull Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spiral Pull Demo-Prefix.pch"; sourceTree = "<group>"; };
+		021117A217364B8D0046D4CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		021117A317364B8D0046D4CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		021117A517364B8D0046D4CC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		021117A717364B8D0046D4CC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		021117A917364B8D0046D4CC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		021117B117364C160046D4CC /* UIScrollView+SpiralPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SpiralPullToRefresh.h"; sourceTree = "<group>"; };
+		021117B217364C160046D4CC /* UIScrollView+SpiralPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SpiralPullToRefresh.m"; sourceTree = "<group>"; };
+		021117B417364DC10046D4CC /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		021117B517364DC10046D4CC /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0211178D17364B8D0046D4CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0211179417364B8D0046D4CC /* UIKit.framework in Frameworks */,
+				0211179617364B8D0046D4CC /* Foundation.framework in Frameworks */,
+				0211179817364B8D0046D4CC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0211178717364B8D0046D4CC = {
+			isa = PBXGroup;
+			children = (
+				0211179917364B8D0046D4CC /* Spiral Pull Demo */,
+				0211179217364B8D0046D4CC /* Frameworks */,
+				0211179117364B8D0046D4CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0211179117364B8D0046D4CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0211179017364B8D0046D4CC /* Spiral Pull Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0211179217364B8D0046D4CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0211179317364B8D0046D4CC /* UIKit.framework */,
+				0211179517364B8D0046D4CC /* Foundation.framework */,
+				0211179717364B8D0046D4CC /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0211179917364B8D0046D4CC /* Spiral Pull Demo */ = {
+			isa = PBXGroup;
+			children = (
+				021117B017364C160046D4CC /* Spiral Pull */,
+				021117A217364B8D0046D4CC /* AppDelegate.h */,
+				021117A317364B8D0046D4CC /* AppDelegate.m */,
+				021117B417364DC10046D4CC /* DataViewController.h */,
+				021117B517364DC10046D4CC /* DataViewController.m */,
+				0211179A17364B8D0046D4CC /* Supporting Files */,
+			);
+			path = "Spiral Pull Demo";
+			sourceTree = "<group>";
+		};
+		0211179A17364B8D0046D4CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0211179B17364B8D0046D4CC /* Spiral Pull Demo-Info.plist */,
+				0211179C17364B8D0046D4CC /* InfoPlist.strings */,
+				0211179F17364B8D0046D4CC /* main.m */,
+				021117A117364B8D0046D4CC /* Spiral Pull Demo-Prefix.pch */,
+				021117A517364B8D0046D4CC /* Default.png */,
+				021117A717364B8D0046D4CC /* Default@2x.png */,
+				021117A917364B8D0046D4CC /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		021117B017364C160046D4CC /* Spiral Pull */ = {
+			isa = PBXGroup;
+			children = (
+				021117B117364C160046D4CC /* UIScrollView+SpiralPullToRefresh.h */,
+				021117B217364C160046D4CC /* UIScrollView+SpiralPullToRefresh.m */,
+			);
+			path = "Spiral Pull";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0211178F17364B8D0046D4CC /* Spiral Pull Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 021117AD17364B8D0046D4CC /* Build configuration list for PBXNativeTarget "Spiral Pull Demo" */;
+			buildPhases = (
+				0211178C17364B8D0046D4CC /* Sources */,
+				0211178D17364B8D0046D4CC /* Frameworks */,
+				0211178E17364B8D0046D4CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Spiral Pull Demo";
+			productName = "Spiral Pull Demo";
+			productReference = 0211179017364B8D0046D4CC /* Spiral Pull Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0211178817364B8D0046D4CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Dmitry Klimkin";
+			};
+			buildConfigurationList = 0211178B17364B8D0046D4CC /* Build configuration list for PBXProject "Spiral Pull Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0211178717364B8D0046D4CC;
+			productRefGroup = 0211179117364B8D0046D4CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0211178F17364B8D0046D4CC /* Spiral Pull Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0211178E17364B8D0046D4CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0211179E17364B8D0046D4CC /* InfoPlist.strings in Resources */,
+				021117A617364B8D0046D4CC /* Default.png in Resources */,
+				021117A817364B8D0046D4CC /* Default@2x.png in Resources */,
+				021117AA17364B8D0046D4CC /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0211178C17364B8D0046D4CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				021117A017364B8D0046D4CC /* main.m in Sources */,
+				021117A417364B8D0046D4CC /* AppDelegate.m in Sources */,
+				021117B317364C160046D4CC /* UIScrollView+SpiralPullToRefresh.m in Sources */,
+				021117B617364DC10046D4CC /* DataViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0211179C17364B8D0046D4CC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0211179D17364B8D0046D4CC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		021117AB17364B8D0046D4CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		021117AC17364B8D0046D4CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		021117AE17364B8D0046D4CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spiral Pull Demo/Spiral Pull Demo-Prefix.pch";
+				INFOPLIST_FILE = "Spiral Pull Demo/Spiral Pull Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		021117AF17364B8D0046D4CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spiral Pull Demo/Spiral Pull Demo-Prefix.pch";
+				INFOPLIST_FILE = "Spiral Pull Demo/Spiral Pull Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0211178B17364B8D0046D4CC /* Build configuration list for PBXProject "Spiral Pull Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				021117AB17364B8D0046D4CC /* Debug */,
+				021117AC17364B8D0046D4CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		021117AD17364B8D0046D4CC /* Build configuration list for PBXNativeTarget "Spiral Pull Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				021117AE17364B8D0046D4CC /* Debug */,
+				021117AF17364B8D0046D4CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0211178817364B8D0046D4CC /* Project object */;
+}
