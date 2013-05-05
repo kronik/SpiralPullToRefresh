@@ -517,7 +517,6 @@ static char UIScrollViewPullToRefreshView;
 }
 
 
-
 - (CGPoint) calcNewCurvePointForBottomRightViewForOffset: (float)contentOffset {
     
     contentOffset *= 2;
@@ -527,9 +526,6 @@ static char UIScrollViewPullToRefreshView;
     
     CGPoint finalPoint = CGPointMake(point.x * cos(45 * M_PI / 180) + point.y * sin (45 * M_PI / 180) - (ScreenWidth > 700 ? 58.5 : 124),
                                      point.y * cos(45 * M_PI / 180) - point.x * sin (45 * M_PI / 180) + (ScreenWidth > 700 ? 342 : 184));
-    
-    NSLog(@"Width: %f", ScreenWidth);
-    
     return finalPoint;
 }
 
