@@ -9,8 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIScrollView+SpiralPullToRefresh.h"
 
-#define ScreenWidth  [[UIScreen mainScreen] bounds].size.width
-#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define ScreenWidth  self.frame.size.width
 
 #define SpiralPullToRefreshViewHeight 300
 #define SpiralPullToRefreshViewTriggerAreaHeight 101
@@ -488,22 +487,35 @@ static char UIScrollViewPullToRefreshView;
         contentOffset = 50;
     }
     
-    lastOffset = contentOffset * 2;
+    if (contentOffset == 50.0) {
+        bottomLeftView.center = CGPointMake((ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - 50 + bottomLeftView.frame.size.height + 1);
+        bottomRightView.center = CGPointMake((ScreenWidth / 2) - bottomRightView.frame.size.width - 1, self.frame.size.height - 50 - bottomRightView.frame.size.height - 1);
+        topRightView.center = CGPointMake((ScreenWidth / 2) + topRightView.frame.size.width + 1, self.frame.size.height - 50 - topRightView.frame.size.height - 1);
+        topLeftView.center = CGPointMake((ScreenWidth / 2) + topLeftView.frame.size.width + 1, self.frame.size.height - 50 + topLeftView.frame.size.height + 1);
+        
+        middleLeftView.center = CGPointMake((ScreenWidth / 2) - middleLeftView.frame.size.width - 1, self.frame.size.height - 50);
+        middleRightView.center = CGPointMake((ScreenWidth / 2) + middleRightView.frame.size.width + 1, self.frame.size.height - 50);
+        middleCenterView.center = CGPointMake((ScreenWidth / 2), self.frame.size.height - 50);
+        
+    } else {
     
-    CGPoint point = [self calcNewCurvePointForBottomLeftViewForOffset: contentOffset];
-    CGPoint point2 = [self calcNewCurvePointForBottomRightViewForOffset: contentOffset];
-    
-    bottomLeftView.center = CGPointMake(point.x, point.y);
-    bottomRightView.center = CGPointMake(ScreenWidth - point2.x, self.frame.size.height - 100 + (self.frame.size.height - point2.y));
-    bottomCenterView.center = [self calcNewPointForBottomCenterViewForOffset: contentOffset];
-    
-    middleLeftView.center = [self calcNewPointForMiddleLeftViewForOffset: contentOffset];
-    middleRightView.center = CGPointMake(ScreenWidth - middleLeftView.center.x, middleLeftView.center.y);
-    middleCenterView.center = [self calcNewPointForMiddleCenterViewForOffset: contentOffset];
+        lastOffset = contentOffset * 2;
+        
+        CGPoint point = [self calcNewCurvePointForBottomLeftViewForOffset: contentOffset];
+        CGPoint point2 = [self calcNewCurvePointForBottomRightViewForOffset: contentOffset];
+        
+        bottomLeftView.center = CGPointMake(point.x, point.y);
+        bottomRightView.center = CGPointMake(ScreenWidth - point2.x, self.frame.size.height - 100 + (self.frame.size.height - point2.y));
+        bottomCenterView.center = [self calcNewPointForBottomCenterViewForOffset: contentOffset];
+        
+        middleLeftView.center = [self calcNewPointForMiddleLeftViewForOffset: contentOffset];
+        middleRightView.center = CGPointMake(ScreenWidth - middleLeftView.center.x, middleLeftView.center.y);
+        middleCenterView.center = [self calcNewPointForMiddleCenterViewForOffset: contentOffset];
 
-    topRightView.center = CGPointMake(ScreenWidth - point.x, self.frame.size.height - 100 + (self.frame.size.height - point.y));    
-    topCenterView.center = [self calcNewPointForTopCenterViewForOffset: contentOffset];
-    topLeftView.center = point2;
+        topRightView.center = CGPointMake(ScreenWidth - point.x, self.frame.size.height - 100 + (self.frame.size.height - point.y));
+        topCenterView.center = [self calcNewPointForTopCenterViewForOffset: contentOffset];
+        topLeftView.center = point2;
+    }
     
     [self setNeedsDisplay];
 }
