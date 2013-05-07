@@ -483,11 +483,11 @@ static char UIScrollViewPullToRefreshView;
         contentOffset = -10;
     }
     
-    if (contentOffset > 50) {
-        contentOffset = 50;
+    if (contentOffset > SpiralPullToRefreshViewTriggerAreaHeight / 2) {
+        contentOffset = SpiralPullToRefreshViewTriggerAreaHeight / 2;
     }
     
-    if (contentOffset == 50.0) {
+    if (contentOffset == SpiralPullToRefreshViewTriggerAreaHeight / 2) {
         bottomLeftView.center = CGPointMake((ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - 50 + bottomLeftView.frame.size.height + 1);
         bottomRightView.center = CGPointMake((ScreenWidth / 2) - bottomRightView.frame.size.width - 1, self.frame.size.height - 50 - bottomRightView.frame.size.height - 1);
         topRightView.center = CGPointMake((ScreenWidth / 2) + topRightView.frame.size.width + 1, self.frame.size.height - 50 - topRightView.frame.size.height - 1);
@@ -523,7 +523,7 @@ static char UIScrollViewPullToRefreshView;
 - (CGPoint) calcNewCurvePointForBottomLeftViewForOffset: (float)contentOffset {
     
     contentOffset *= 2;
-    contentOffset = (100 - contentOffset);
+    contentOffset = (SpiralPullToRefreshViewTriggerAreaHeight - contentOffset);
     
     return CGPointMake(((contentOffset + 70) * sin((contentOffset + 0) * M_PI / 90)) + (ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - ((contentOffset + 70) * cos((contentOffset + 0) * M_PI / 90)) + 28);
 }
@@ -532,7 +532,7 @@ static char UIScrollViewPullToRefreshView;
 - (CGPoint) calcNewCurvePointForBottomRightViewForOffset: (float)contentOffset {
     
     contentOffset *= 2;
-    contentOffset = (100 - contentOffset);
+    contentOffset = (SpiralPullToRefreshViewTriggerAreaHeight - contentOffset);
     
     CGPoint point = CGPointMake(((contentOffset + 70) * sin((contentOffset + 0) * M_PI / 90)) + (ScreenWidth / 2) - bottomLeftView.frame.size.width + 1, self.frame.size.height - ((contentOffset + 70) * cos((contentOffset + 0) * M_PI / 90)) + 29);
     
