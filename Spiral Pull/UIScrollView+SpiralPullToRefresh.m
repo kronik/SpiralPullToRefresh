@@ -14,6 +14,7 @@
 #define SpiralPullToRefreshViewHeight 300
 #define SpiralPullToRefreshViewTriggerAreaHeight 101
 #define SpiralPullToRefreshViewParticleSize 7
+#define SpiralPullToRefreshViewAnimationAngle (360.0 / 8.0)
 
 @interface SpiralPullToRefreshView ()
 
@@ -488,203 +489,39 @@ static char UIScrollViewPullToRefreshView;
     }
     
     if (contentOffset == SpiralPullToRefreshViewTriggerAreaHeight / 2) {
-        bottomLeftView.center = CGPointMake((ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - 50 + bottomLeftView.frame.size.height + 1);
-        bottomRightView.center = CGPointMake((ScreenWidth / 2) - bottomRightView.frame.size.width - 1, self.frame.size.height - 50 - bottomRightView.frame.size.height - 1);
-        topRightView.center = CGPointMake((ScreenWidth / 2) + topRightView.frame.size.width + 1, self.frame.size.height - 50 - topRightView.frame.size.height - 1);
-        topLeftView.center = CGPointMake((ScreenWidth / 2) + topLeftView.frame.size.width + 1, self.frame.size.height - 50 + topLeftView.frame.size.height + 1);
         
-        middleLeftView.center = CGPointMake((ScreenWidth / 2) - middleLeftView.frame.size.width - 1, self.frame.size.height - 50);
-        middleRightView.center = CGPointMake((ScreenWidth / 2) + middleRightView.frame.size.width + 1, self.frame.size.height - 50);
-        middleCenterView.center = CGPointMake((ScreenWidth / 2), self.frame.size.height - 50);
-        
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options: UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             bottomLeftView.center = CGPointMake((ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - 50 + bottomLeftView.frame.size.height + 1);
+                             bottomRightView.center = CGPointMake((ScreenWidth / 2) - bottomRightView.frame.size.width - 1, self.frame.size.height - 50 - bottomRightView.frame.size.height - 1);
+                             topRightView.center = CGPointMake((ScreenWidth / 2) + topRightView.frame.size.width + 1, self.frame.size.height - 50 - topRightView.frame.size.height - 1);
+                             topLeftView.center = CGPointMake((ScreenWidth / 2) + topLeftView.frame.size.width + 1, self.frame.size.height - 50 + topLeftView.frame.size.height + 1);
+                             
+                             middleLeftView.center = CGPointMake((ScreenWidth / 2) - middleLeftView.frame.size.width - 1, self.frame.size.height - 50);
+                             middleRightView.center = CGPointMake((ScreenWidth / 2) + middleRightView.frame.size.width + 1, self.frame.size.height - 50);
+                             middleCenterView.center = CGPointMake((ScreenWidth / 2), self.frame.size.height - 50);
+                             topCenterView.center = CGPointMake((ScreenWidth / 2), self.frame.size.height - 50 - topCenterView.frame.size.height - 1);
+                             bottomCenterView.center = CGPointMake((ScreenWidth / 2), self.frame.size.height - 50 + bottomCenterView.frame.size.height + 1);
+                         }
+                         completion:^(BOOL finished){
+                         }]; 
     } else {
     
+        for (int i=0; i<self.particles.count; i++) {
+            
+            float angle = - (i * SpiralPullToRefreshViewAnimationAngle + contentOffset) * M_PI / 180;
+            float radius = 200 - (contentOffset * 4);
+            
+            UIView *particleView = self.particles [i];
+            
+            particleView.center = CGPointMake((ScreenWidth / 2) + radius * cos (angle), self.frame.size.height - ((SpiralPullToRefreshViewTriggerAreaHeight / 2) + radius * sin(angle)));
+        }
         lastOffset = contentOffset * 2;
-        
-        CGPoint point = [self calcNewCurvePointForBottomLeftViewForOffset: contentOffset];
-        CGPoint point2 = [self calcNewCurvePointForBottomRightViewForOffset: contentOffset];
-        
-        bottomLeftView.center = CGPointMake(point.x, point.y);
-        bottomRightView.center = CGPointMake(ScreenWidth - point2.x, self.frame.size.height - 100 + (self.frame.size.height - point2.y));
-        bottomCenterView.center = [self calcNewPointForBottomCenterViewForOffset: contentOffset];
-        
-        middleLeftView.center = [self calcNewPointForMiddleLeftViewForOffset: contentOffset];
-        middleRightView.center = CGPointMake(ScreenWidth - middleLeftView.center.x, middleLeftView.center.y);
-        middleCenterView.center = [self calcNewPointForMiddleCenterViewForOffset: contentOffset];
-
-        topRightView.center = CGPointMake(ScreenWidth - point.x, self.frame.size.height - 100 + (self.frame.size.height - point.y));
-        topCenterView.center = [self calcNewPointForTopCenterViewForOffset: contentOffset];
-        topLeftView.center = point2;
     }
     
     [self setNeedsDisplay];
-}
-
-- (CGPoint) calcNewCurvePointForBottomLeftViewForOffset: (float)contentOffset {
-    
-    contentOffset *= 2;
-    contentOffset = (SpiralPullToRefreshViewTriggerAreaHeight - contentOffset);
-    
-    return CGPointMake(((contentOffset + 70) * sin((contentOffset + 0) * M_PI / 90)) + (ScreenWidth / 2) - bottomLeftView.frame.size.width - 1, self.frame.size.height - ((contentOffset + 70) * cos((contentOffset + 0) * M_PI / 90)) + 28);
-}
-
-
-- (CGPoint) calcNewCurvePointForBottomRightViewForOffset: (float)contentOffset {
-    
-    contentOffset *= 2;
-    contentOffset = (SpiralPullToRefreshViewTriggerAreaHeight - contentOffset);
-    
-    CGPoint point = CGPointMake(((contentOffset + 70) * sin((contentOffset + 0) * M_PI / 90)) + (ScreenWidth / 2) - bottomLeftView.frame.size.width + 1, self.frame.size.height - ((contentOffset + 70) * cos((contentOffset + 0) * M_PI / 90)) + 29);
-    
-    CGPoint finalPoint = CGPointMake(point.x * cos(45 * M_PI / 180) + point.y * sin (45 * M_PI / 180) - (ScreenWidth > 700 ? 58.5 : 124),
-                                     point.y * cos(45 * M_PI / 180) - point.x * sin (45 * M_PI / 180) + (ScreenWidth > 700 ? 342 : 183.7));
-    return finalPoint;
-}
-
-- (CGPoint) calcNewLinearPointForBottomLeftViewForOffset: (float)contentOffset {
-    
-    float x1 = 10;
-    float x2 = (ScreenWidth / 2) - bottomLeftView.frame.size.width;
-    float y1 = 5;
-    float y2 = 50 - bottomLeftView.frame.size.height;
-    
-    float A = y1 - y2;
-    float B = x2 - x1;
-    float C = x1 * y2 - x2 * y1;
-    
-    float newY = contentOffset;
-    float newX = -(C + B * newY) / A;
-    
-    if ((newX > -10) && (newX < x2 - 1)) {
-        return CGPointMake(newX, self.frame.size.height - newY);
-    } else {
-        if (newX >= x2 - 1) {
-            return CGPointMake(x2 - 1, self.frame.size.height - (y2 - 1));
-        } else {
-            return CGPointMake(bottomLeftView.center.x, self.frame.size.height - newY);
-        }
-    }
-}
-
-- (CGPoint) calcNewPointForBottomCenterViewForOffset: (float)contentOffset {
-    float x1 = (ScreenWidth / 2);
-    float x2 = (ScreenWidth / 2);
-    float y1 = -10;
-    float y2 = 50 - bottomCenterView.frame.size.height;
-    
-    float A = y1 - y2;
-    float B = x2 - x1;
-    float C = x1 * y2 - x2 * y1;
-    
-    float newY = contentOffset;
-    float newX = -(C + B * newY) / A;
-    
-    if ((newY > -10) && (newY < y2)) {
-        return CGPointMake(newX, self.frame.size.height - newY);
-    } else {
-        if (newY >= y2) {
-            return CGPointMake(x2, self.frame.size.height - (y2 - 1));
-        } else {
-            return CGPointMake(bottomCenterView.center.x, self.frame.size.height - newY);
-        }
-    }
-}
-
-- (CGPoint) calcNewPointForMiddleLeftViewForOffset: (float)contentOffset {
-    float x1 = 10;
-    float x2 = (ScreenWidth / 2) - middleLeftView.frame.size.width;
-    float y1 = 5;
-    float y2 = 50;
-    
-    float A = y1 - y2;
-    float B = x2 - x1;
-    float C = x1 * y2 - x2 * y1;
-    
-    float newY = contentOffset;
-    float newX = -(C + B * newY) / A;
-    
-    if ((newX > -10) && (newX < x2 - 1)) {
-        return CGPointMake(newX, self.frame.size.height - newY);
-    } else {
-        if (newX >= x2 - 1) {
-            return CGPointMake(x2 - 1, self.frame.size.height - y2);
-        } else {
-            return CGPointMake(middleLeftView.center.x, self.frame.size.height - newY);
-        }
-    }
-}
-
-- (CGPoint) calcNewPointForMiddleCenterViewForOffset: (float)contentOffset {
-    float x1 = (ScreenWidth / 2);
-    float x2 = (ScreenWidth / 2);
-    float y1 = -10;
-    float y2 = 50;
-    
-    float A = y1 - y2;
-    float B = x2 - x1;
-    float C = x1 * y2 - x2 * y1;
-    
-    float newY = contentOffset;
-    float newX = -(C + B * newY) / A;
-    
-    if ((newY > -10) && (newY < y2)) {
-        return CGPointMake(newX, self.frame.size.height - newY);
-    } else {
-        if (newY >= y2) {
-            return CGPointMake(x2, self.frame.size.height - y2);
-        } else {
-            return CGPointMake(middleCenterView.center.x, self.frame.size.height - newY);
-        }
-    }
-}
-
-- (CGPoint) calcNewPointForTopLeftViewForOffset: (float)contentOffset {
-    float x1 = 10;
-    float x2 = (ScreenWidth / 2) - topLeftView.frame.size.width;
-    float y1 = 70;
-    float y2 = 50 + topLeftView.frame.size.height;
-    
-    float A = y1 - y2;
-    float B = x2 - x1;
-    float C = x1 * y2 - x2 * y1;
-    
-    float newY = 100 - contentOffset;
-    float newX = -(C + B * newY) / A;
-    
-    if ((newX > -10) && (newX < x2 - 1)) {
-        
-        return CGPointMake(newX, self.frame.size.height - newY);
-    } else {
-        if (newX >= x2 - 1) {
-            return CGPointMake(x2 - 1, self.frame.size.height - (y2 + 1));
-        } else {
-            return CGPointMake(topLeftView.center.x, self.frame.size.height - newY);
-        }
-    }
-}
-
-- (CGPoint) calcNewPointForTopCenterViewForOffset: (float)contentOffset {
-    float x1 = (ScreenWidth / 2);
-    float x2 = (ScreenWidth / 2);
-    float y1 = 100;
-    float y2 = 50 + topCenterView.frame.size.height;
-    
-    float A = y1 - y2;
-    float B = x2 - x1;
-    float C = x1 * y2 - x2 * y1;
-    
-    float newY = 100 - contentOffset;
-    float newX = -(C + B * newY) / A;
-    
-    if ((newY < 120) && (newY > y2)) {
-        return CGPointMake(newX, self.frame.size.height - newY);
-    } else {
-        if (newY <= y2) {
-            return CGPointMake(x2, self.frame.size.height - (y2 + 1));
-        } else {
-            return CGPointMake(middleCenterView.center.x, self.frame.size.height - newY);
-        }
-    }
 }
 
 @end
