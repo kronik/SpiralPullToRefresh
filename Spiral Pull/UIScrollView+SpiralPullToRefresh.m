@@ -51,7 +51,12 @@ static char UIScrollViewPullToRefreshView;
         
         [self addSubview:view];
         
-        view.originalTopInset = self.contentInset.top;
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+            view.originalTopInset = self.contentInset.top;
+        } else {
+            view.originalTopInset = 64;
+        }
+        
         self.pullToRefreshController = view;
         self.showsPullToRefresh = YES;
     }
